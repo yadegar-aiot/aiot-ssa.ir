@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تیم علمی پژوهشی | انجمن علمی اینترنت اشیاء و علوم داده</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .team-single {
+            padding-top: 120px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .team-single-card {
+            background: var(--bg-card);
+            border-radius: 32px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-light);
+        }
+        .team-single-logo {
+            max-width: 300px;
+            margin-bottom: 30px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <img src="../assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن" class="logo-img">
+            <span class="logo-text">انجمن اینترنت اشیاء و هوش مصنوعی</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="../ndex.html">خانه</a>
+            <a href="../team.html">تیم‌های اجرایی</a>
+            <a href="../workshops.html">کارگاه‌ها</a>
+            <a href="../competitions.html">مسابقات</a>
+            <a href="../board.html">اعضای هیات مدیره</a>
+            <a href="../about.html">درباره ما</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container team-single">
+        <div class="team-single-card">
+            <img src="../assets/svgs/team-research.svg" alt="لوگو تیم علمی پژوهشی" class="team-single-logo">
+            <h1>تیم علمی پژوهشی انجمن</h1>
+            <p class="team-leader">سرپرست: <strong>سجاد ثقفی</strong></p>
+            <p>پژوهش‌های پیشرفته در حوزه هوش مصنوعی، اینترنت اشیا و علوم داده</p>
+            <p>این تیم مسئولیت انجام پروژه‌های تحقیقاتی، طراحی الگوریتم‌های پیشرفته، و همکاری با مراکز علمی را بر عهده دارد.</p>
+        </div>
+        <a href="../team.html" class="back-link">← بازگشت به تیم‌های اجرایی</a>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-container">
+        <img src="../assets/svgs/aiot-logo-blue.svg" alt="لوگو انجمن" class="footer-logo">
+        <p>© ۱۴۰۴ - انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی) - باشگاه پژوهشگران جوان و نخبگان شهرری</p>
+    </div>
+</footer>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+    <script>
+    document.getElementById('mobileMenuBtn').onclick = function() {
+        var x = document.getElementById('mainNav');
+        if (x.style.display === 'flex') {
+            x.style.display = 'none';
+        } else {
+            x.style.display = 'flex';
+        }
+    };
+</script>
+
+<script src="../script.js"></script>
+</body>
+</html>

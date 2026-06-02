@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تیم طراحی و ایده‌پردازی | انجمن علمی اینترنت اشیاء و علوم داده</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* ===== GIF بک‌گراند ===== */
+        .gif-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-image: url('../assets/videos/team-design-bg.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* اگر GIF نبود، fallback رنگی */
+            background-color: #1a0a0f;
+            /* بلور و تاریکی برای پوشش کیفیت */
+            filter: blur(1px) brightness(0.6);
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(108, 0, 13, 0.6);
+            z-index: -1;
+        }
+
+        /* ===== هدر ===== */
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            z-index: 100;
+            padding: 12px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* ===== محتوای اصلی ===== */
+        .team-single {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .team-single-card {
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 32px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.4);
+            margin-bottom: 40px;
+        }
+
+        .team-single-logo {
+            max-width: 350px;
+            margin-bottom: 30px;
+        }
+
+        /* ===== گالری ===== */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-family: 'Pinar', 'Shabnam', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+        }
+
+        .category-count {
+            font-family: 'Shabnam', sans-serif;
+            font-weight: normal;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 4px 14px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 3/4;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .gallery-image-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: linear-gradient(135deg, 
+                rgba(108, 0, 13, 0.3), 
+                rgba(30, 64, 175, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-thumb {
+            transform: scale(1.05);
+        }
+
+        .image-fallback {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0.3;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .gallery-item:hover .image-fallback {
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-item-title {
+            font-family: 'Pinar', sans-serif;
+            font-weight: 900;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-item-desc {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* لایت‌باکس */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90vh;
+            position: relative;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        .lightbox-loader {
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-prev {
+            right: 20px;
+        }
+
+        .lightbox-next {
+            left: 20px;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        /* ===== لینک برگشت ===== */
+        .back-link-wrapper {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.2);
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.35);
+            transform: translateX(-5px);
+        }
+
+        /* ===== فوتر ===== */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.8) !important;
+        }
+
+        .footer-logo {
+            filter: brightness(0) invert(1);
+        }
+
+        .back-to-top {
+            background: rgba(108, 0, 13, 0.8) !important;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 15px;
+            }
+
+            .category-title {
+                font-size: 1.4rem;
+            }
+
+            .lightbox-prev,
+            .lightbox-next {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .gif-background {
+                filter: brightness(0.6);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- GIF بک‌گراند -->
+<div class="gif-background"></div>
+<div class="bg-overlay"></div>
+
+<div id="scrollProgress"></div>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <img src="../assets/svgs/aiot-logo-blue.svg" alt="لوگو انجمن" class="logo-img">
+            <span class="logo-text">انجمن اینترنت اشیاء و هوش مصنوعی</span>
+        </div>
+        <nav>
+            <a href="../index.html">خانه</a>
+            <a href="../team.html">تیم‌های اجرایی</a>
+            <a href="../workshops.html">کارگاه‌ها</a>
+            <a href="../competitions.html">مسابقات</a>
+            <a href="../board.html">اعضای هیات مدیره</a>
+            <a href="../about.html">درباره ما</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container team-single">
+        <div class="team-single-card">
+            <img src="../assets/svgs/team-design.svg" alt="لوگو تیم طراحی" class="team-single-logo">
+            <h1>تیم طراحی و ایده‌پردازی</h1>
+            <p class="team-leader">سرپرست: <strong>حنانه قنادان‌زاده</strong></p>
+            <p>طراحی تجربه کاربری، برندسازی، محتوای بصری و ایده‌پردازی خلاقانه</p>
+            <p>این تیم مسئولیت طراحی تمام المان‌های بصری انجمن، برندسازی، و خلق ایده‌های نوآورانه برای رویدادها را بر عهده دارد.</p>
+        </div>
+    </div>
+
+    <section class="gallery-section">
+        
+        <div class="gallery-category">
+            <h2 class="category-title">
+                <span class="category-icon">🎯</span>
+                پوسترها
+                <span class="category-count">۵ اثر</span>
+            </h2>
+            <div class="gallery-grid" id="posters-grid"></div>
+        </div>
+
+        <div class="gallery-category">
+            <h2 class="category-title">
+                <span class="category-icon">📊</span>
+                اینفوگرافیک‌ها
+                <span class="category-count">۱۱ اثر</span>
+            </h2>
+            <div class="gallery-grid" id="infographics-grid"></div>
+        </div>
+
+        <div class="gallery-category">
+            <h2 class="category-title">
+                <span class="category-icon">📰</span>
+                نشریه کدینو
+                <span class="category-count">۱ اثر</span>
+            </h2>
+            <div class="gallery-grid" id="codino-grid"></div>
+        </div>
+    </section>
+
+    <div class="back-link-wrapper" style="padding-bottom: 40px;">
+        <a href="../team.html" class="back-link">← بازگشت به تیم‌های اجرایی</a>
+    </div>
+</main>
+
+<footer>
+    <div class="container footer-container">
+        <img src="../assets/svgs/aiot-logo-blue.svg" alt="لوگو انجمن" class="footer-logo">
+        <p>© ۱۴۰۴ - انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی) - باشگاه پژوهشگران جوان و نخبگان شهرری</p>
+    </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <div class="lightbox-loader" id="lightboxLoader">⏳ در حال بارگذاری...</div>
+        <img class="lightbox-image" id="lightboxImage" src="" alt="" style="display:none;">
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">❮</button>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">❯</button>
+    </div>
+</div>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+<script src="../script.js"></script>
+<script>
+    // ===== داده‌های گالری =====
+    const galleryData = {
+        posters: {
+            gridId: 'posters-grid',
+            items: [
+                { thumb: '../assets/images/gallery/posters/thumb/poster-5.jpg', full: '../assets/images/gallery/posters/full/poster-5.png', title: 'پوستر سمینار', desc: 'سمینار علوم داده', fallback: '📢' },
+                { thumb: '../assets/images/gallery/posters/thumb/poster-4.jpg', full: '../assets/images/gallery/posters/full/poster-4.png', title: 'پوستر مسابقه', desc: 'مسابقه برنامه‌نویسی', fallback: '🏆' },
+                { thumb: '../assets/images/gallery/posters/thumb/poster-3.jpg', full: '../assets/images/gallery/posters/full/poster-3.png', title: 'پوستر کارگاه', desc: 'کارگاه آموزش طراحی', fallback: '🖼️' },
+                { thumb: '../assets/images/gallery/posters/thumb/poster-2.jpg', full: '../assets/images/gallery/posters/full/poster-2.png', title: 'پوستر رویداد', desc: 'روز دانشجو ۱۴۰۳', fallback: '🎨' },
+                { thumb: '../assets/images/gallery/posters/thumb/poster-1.jpg', full: '../assets/images/gallery/posters/full/poster-1.png', title: 'پوستر همایش', desc: 'همایش هوش مصنوعی و اینترنت اشیاء', fallback: '🎯' }
+            ]
+        },
+        infographics: {
+            gridId: 'infographics-grid',
+            items: [
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-11.jpg', full: '../assets/images/gallery/infographics/full/infographic-11.png', title: 'بزودی...', desc: 'توضیحات اینفوگرافیک یازدهم', fallback: '📊' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-10.jpg', full: '../assets/images/gallery/infographics/full/infographic-10.png', title: 'یک مدل هوش مصنوعی چگونه یاد میگیرد؟', desc: 'آشنایی با مراحل به وجود آمدن یک مدل هوش مصنوعی', fallback: '📊' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-9.jpg', full: '../assets/images/gallery/infographics/full/infographic-9.png', title: 'تحقیق نویسی بدون اینترنت بین‌الملل', desc: 'مهارت پنهانی پژوهشگران کارکشته', fallback: '🏅' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-8.jpg', full: '../assets/images/gallery/infographics/full/infographic-8.png', title: 'رازهای تسلط بر کدنویسی', desc: 'رویکردهای نوین و کاربردی برای برنامه‌نویسان', fallback: '📚' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-7.jpg', full: '../assets/images/gallery/infographics/full/infographic-7.png', title: 'مهارت‌های نرم', desc: 'کلید طلایی شغلی و زندگی روزمره', fallback: '📅' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-6.jpg', full: '../assets/images/gallery/infographics/full/infographic-6.png', title: 'مسیر شغلی کامپیوتر; از انتخاب گرایش تا بازارکار', desc: 'راهنمای جامع دانشجویان مهندسی کامپیوتر', fallback: '🌐' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-5.jpg', full: '../assets/images/gallery/infographics/full/infographic-5.png', title: 'سه رویکرد اصلی در یادگیری ماشین', desc: 'آشنایی با سه متد اصلی یادگیری', fallback: '🗺️' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-4.jpg', full: '../assets/images/gallery/infographics/full/infographic-4.png', title: 'برنامه‌نویسی رو چطوری یادبگیریم؟', desc: 'آشنایی با انواع روش های نوین برای برنامه نویسی', fallback: '📋' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-3.jpg', full: '../assets/images/gallery/infographics/full/infographic-3.png', title: 'تو انجمن چی‌میگذره؟', desc: 'آشنایی با پروتکل اجرایی‌ما برای یه پست ساده!', fallback: '📉' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-2.jpg', full: '../assets/images/gallery/infographics/full/infographic-2.png', title: 'دروازه‌ورود شما به دنیای مهارت‌های دیجیتال', desc: 'W3Schools چیست؟', fallback: '📈' },
+                { thumb: '../assets/images/gallery/infographics/thumb/infographic-1.jpg', full: '../assets/images/gallery/infographics/full/infographic-1.png', title: 'به واحد یادگار امام خوش آمدید', desc: 'معرفی سامانه آموزشیار', fallback: '📊' }
+            ]
+        },
+        codino: {
+            gridId: 'codino-grid',
+            items: [
+                { thumb: '../assets/images/gallery/codino/thumb/codino-1.jpg', full: '../assets/images/gallery/codino/full/codino-1.png', title: 'نشریه کدینو', desc: 'شماره اول - بهار ۱۴۰۵', fallback: '📰' }
+            ]
+        }
+    };
+
+    // ===== ساخت گالری =====
+    function createGallery(categoryData) {
+        const grid = document.getElementById(categoryData.gridId);
+        if (!grid) return;
+
+        categoryData.items.forEach((item, index) => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.setAttribute('data-category', categoryData.gridId);
+            galleryItem.setAttribute('data-index', index);
+            galleryItem.setAttribute('data-full', item.full);
+            
+            galleryItem.innerHTML = `
+                <div class="gallery-image-container">
+                    <div class="image-fallback">${item.fallback}</div>
+                    <img 
+                        class="gallery-thumb" 
+                        src="${item.thumb}" 
+                        alt="${item.title}"
+                        loading="lazy"
+                        onerror="this.style.display='none'"
+                        onload="this.previousElementSibling.style.display='none'"
+                    >
+                </div>
+                <div class="gallery-overlay">
+                    <div class="gallery-item-title">${item.title}</div>
+                    <div class="gallery-item-desc">${item.desc}</div>
+                </div>
+            `;
+            
+            grid.appendChild(galleryItem);
+        });
+    }
+
+    Object.values(galleryData).forEach(category => createGallery(category));
+
+    // ===== لایت‌باکس =====
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxLoader = document.getElementById('lightboxLoader');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    
+    let currentImages = [];
+    let currentIndex = 0;
+
+    document.addEventListener('click', function(e) {
+        const galleryItem = e.target.closest('.gallery-item');
+        if (!galleryItem) return;
+
+        const category = galleryItem.getAttribute('data-category');
+        const index = parseInt(galleryItem.getAttribute('data-index'));
+        
+        let categoryData;
+        if (category === 'posters-grid') categoryData = galleryData.posters;
+        else if (category === 'infographics-grid') categoryData = galleryData.infographics;
+        else if (category === 'codino-grid') categoryData = galleryData.codino;
+
+        currentImages = categoryData.items;
+        currentIndex = index;
+        
+        openLightbox(currentImages[currentIndex]);
+    });
+
+    function openLightbox(item) {
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        lightboxLoader.style.display = 'block';
+        lightboxImage.style.display = 'none';
+        
+        const fullImage = new Image();
+        fullImage.onload = function() {
+            lightboxImage.src = item.full;
+            lightboxImage.style.display = 'block';
+            lightboxLoader.style.display = 'none';
+        };
+        fullImage.onerror = function() {
+            lightboxLoader.textContent = '❌ خطا در بارگذاری تصویر';
+        };
+        fullImage.src = item.full;
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        lightboxImage.src = '';
+        lightboxLoader.textContent = '⏳ در حال بارگذاری...';
+        lightboxLoader.style.display = 'block';
+        lightboxImage.style.display = 'none';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    lightboxPrev.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        openLightbox(currentImages[currentIndex]);
+    });
+
+    lightboxNext.addEventListener('click', function(e) {
+        e.stopPropagation();
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        openLightbox(currentImages[currentIndex]);
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') {
+            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+            openLightbox(currentImages[currentIndex]);
+        }
+        if (e.key === 'ArrowLeft') {
+            currentIndex = (currentIndex + 1) % currentImages.length;
+            openLightbox(currentImages[currentIndex]);
+        }
+    });
+</script>
+</body>
+</html>
