@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره ما | انجمن علمی اینترنت اشیاء و علوم داده</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        body {
+            background-color: #6C000D;
+            position: relative;
+            font-family: 'Shabnam', 'Pinar', sans-serif;
+        }
+
+        /* لایه ثابت پس‌زمینه */
+        .fixed-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .fixed-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* کانتینر اصلی */
+        .main-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: white !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+            position: relative;
+            z-index: 100;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
+            color: #1e40af !important;
+        }
+
+        nav a {
+            color: #0f172a !important;
+        }
+
+        nav a:hover {
+            color: #3b82f6 !important;
+        }
+
+        /* محتوای وسط */
+        .content-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* کارت اصلی */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(16px, 3vw, 40px);
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            border-radius: clamp(16px, 3vw, 32px);
+            padding: clamp(16px, 3.5vw, 40px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text {
+            text-align: center;
+            min-width: 0;
+        }
+
+        .about-logo {
+            display: block;
+            margin: 0 auto clamp(12px, 2.5vw, 30px);
+            height: clamp(90px, 18vw, 200px);
+            width: auto;
+            max-width: 100%;
+        }
+
+        .about-text p {
+            margin-bottom: clamp(10px, 1.5vw, 20px);
+            font-size: clamp(0.78rem, 1.4vw, 1.05rem);
+            line-height: 1.7;
+            color: #0f172a;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        .about-details {
+            list-style: none;
+            margin: clamp(10px, 2vw, 20px) 0;
+            text-align: right;
+            padding: 0;
+        }
+
+        .about-details li {
+            margin-bottom: clamp(6px, 1vw, 12px);
+            padding-right: 10px;
+            border-right: 2px solid #1e40af;
+            color: #334155;
+            font-size: clamp(0.72rem, 1.2vw, 0.95rem);
+            word-break: break-word;
+        }
+
+        .about-details li span {
+            font-weight: bold;
+            color: #1e40af;
+            white-space: nowrap;
+        }
+
+        .social-links {
+            margin-top: clamp(12px, 2vw, 25px);
+            text-align: right;
+        }
+
+        .social-links p {
+            color: #0f172a;
+            text-align: right;
+            margin-bottom: 8px;
+            font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+        }
+
+        .social-icons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+            justify-content: flex-start;
+        }
+
+        .social-icons a,
+        .social-links a {
+            background: #f1f5f9;
+            padding: 5px 12px;
+            border-radius: 30px;
+            color: #1e40af;
+            text-decoration: none;
+            font-size: clamp(0.7rem, 1.1vw, 0.85rem);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .social-icons a:hover,
+        .social-links a:hover {
+            background: #1e40af;
+            color: white;
+        }
+
+        .about-image {
+            min-width: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: clamp(12px, 2vw, 24px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* فوتر شفاف */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            padding: 20px 0;
+            flex-shrink: 0;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+            text-align: center;
+        }
+
+        .footer-logo {
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            height: 50px;
+            width: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 0 15px;
+        }
+
+        .back-to-top {
+            background: rgba(108, 0, 13, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 99;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .back-to-top:hover {
+            background: rgba(108, 0, 13, 1) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ========== فقط موبایل: اسکرول بسته بشه ========== */
+        @media (max-width: 900px) {
+            html, body {
+                height: 100%;
+                overflow: hidden;
+            }
+
+            .content-area {
+                padding: 10px;
+                overflow: hidden;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(8px, 2vw, 15px);
+                padding: clamp(10px, 2vw, 20px);
+                border-radius: clamp(12px, 2.5vw, 20px);
+                max-height: calc(100vh - 120px);
+                overflow-y: auto;
+                margin: 0 auto;
+            }
+
+            .about-logo {
+                height: clamp(55px, 12vw, 90px);
+                margin-bottom: clamp(6px, 1.5vw, 10px);
+            }
+
+            .about-text p {
+                font-size: clamp(0.6rem, 1.6vw, 0.72rem);
+                margin-bottom: 6px;
+            }
+
+            .about-details li {
+                font-size: clamp(0.55rem, 1.4vw, 0.7rem);
+                margin-bottom: 4px;
+                padding-right: 5px;
+            }
+
+            .social-icons {
+                gap: 4px;
+            }
+
+            .social-icons a,
+            .social-links a {
+                padding: 3px 8px;
+                font-size: clamp(0.55rem, 1.3vw, 0.65rem);
+                border-radius: 15px;
+            }
+
+            .social-links p {
+                font-size: clamp(0.58rem, 1.3vw, 0.7rem);
+                margin-bottom: 3px;
+            }
+
+            .about-image img {
+                border-radius: clamp(8px, 2vw, 12px);
+            }
+
+            footer {
+                padding: 10px 0;
+            }
+
+            footer p {
+                font-size: 0.6rem;
+            }
+
+            .footer-logo {
+                height: 35px;
+            }
+
+            .back-to-top {
+                display: none;
+            }
+
+            #scrollProgress {
+                display: none;
+            }
+        }
+
+        /* موبایل خیلی کوچک */
+        @media (max-width: 400px) {
+            .about-grid {
+                gap: 6px;
+                padding: 8px;
+                border-radius: 10px;
+                max-height: calc(100vh - 100px);
+            }
+
+            .about-logo {
+                height: clamp(40px, 10vw, 60px);
+                margin-bottom: 4px;
+            }
+
+            .about-text p {
+                font-size: 0.5rem;
+                line-height: 1.4;
+                margin-bottom: 4px;
+            }
+
+            .about-details li {
+                font-size: 0.48rem;
+                margin-bottom: 2px;
+                padding-right: 4px;
+                border-right-width: 1.5px;
+            }
+
+            .social-icons a,
+            .social-links a {
+                padding: 2px 6px;
+                font-size: 0.48rem;
+            }
+
+            .social-links p {
+                font-size: 0.5rem;
+            }
+
+            .about-image img {
+                border-radius: 6px;
+            }
+
+            footer {
+                padding: 6px 0;
+            }
+
+            footer p {
+                font-size: 0.5rem;
+            }
+
+            .footer-logo {
+                height: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- لایه ثابت پس‌زمینه -->
+    <div class="fixed-background">
+        <img src="assets/svgs/gear.svg" alt="gear background">
+    </div>
+
+    <!-- کانتینر اصلی -->
+    <div class="main-wrapper">
+        <div id="scrollProgress"></div>
+
+        <header>
+            <div class="container header-container">
+                <div class="logo">
+                    <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن" class="logo-img">
+                    <span class="logo-text">انجمن اینترنت اشیاء و هوش مصنوعی</span>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+                <nav id="mainNav">
+                    <a href="index.html">خانه</a>
+                    <a href="team.html">تیم‌های اجرایی</a>
+                    <a href="workshops.html">کارگاه‌ها</a>
+                    <a href="competitions.html">مسابقات</a>
+                    <a href="board.html">اعضای هیات مدیره</a>
+                    <a href="about.html">درباره ما</a>
+                </nav>
+            </div>
+        </header>
+
+        <div class="content-area">
+            <div class="about-grid">
+                <div class="about-text">
+                    <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن" class="about-logo">
+
+                    <p><strong>انجمن علمی دانشجویی اینترنت اشیا و علوم داده (هوش مصنوعی)</strong> با هدف ارتقای سطح علمی دانشجویان در حوزه علوم داده و هوش مصنوعی فعالیت می‌کند.</p>
+
+                    <ul class="about-details">
+                        <li><span>📍 محل فعالیت:</span> باشگاه پژوهشگران جوان و نخبگان - شهرری</li>
+                        <li><span>📚 رشته‌های تحت پوشش:</span> مهندسی کامپیوتر، علوم کامپیوتر و مهندسی برق</li>
+                        <li><span>📅 تاریخ تاسیس:</span> ۶ خردادماه ۱۴۰۴</li>
+                        <li><span>📜 تاریخ اخذ پروانه فعالیت:</span> ۲۸ آبان‌ماه ۱۴۰۴</li>
+                        <li><span>👩‍🏫 استاد راهنما:</span> فاطمه نصیری</li>
+                        <li><span>✍️ دبیر انجمن:</span> پوریا لاری</li>
+                    </ul>
+                    <div class="social-links">
+                        <p><strong>صفحات رسمی انجمن:</strong></p>
+                        <div class="social-icons">
+                            <a href="https://bpj.iau.ir/community/50566/" target="_blank">BPJ</a>
+                            <a href="https://github.com/yadegar-aiot" target="_blank">GitHub</a>
+                            <a href="https://www.linkedin.com/company/yadegar-aiot" target="_blank">LinkedIn</a>
+                            <a href="https://t.me/yadegar_aiot" target="_blank">Telegram</a>
+                            <a href="https://ble.ir/yadegar_aiot" target="_blank">Bale</a>
+                            <a href="https://ble.ir/join/DoJwpxagg3" target="_blank">Bale (invite)</a>
+                        </div>
+                        <p><strong>روابط عمومی:</strong> محمدرضا احمدی —
+                            <a href="https://t.me/AIot_ssa_yi_iau" target="_blank">Telegram</a> |
+                            <a href="https://ble.ir/AIot_ssa_yi_iau" target="_blank">Bale</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/group-photo.jpg" alt="عکس گروه انجمن"
+                    onerror="this.src='https://placehold.co/600x400/f1f5f9/1e40af?text=عکس+گروه'">
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container footer-container">
+                <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگو انجمن" class="footer-logo" onerror="this.src='https://placehold.co/60x60/1e40af/ffffff?text=AIoT'">
+                <p>© ۱۴۰۴ - انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی) - باشگاه پژوهشگران جوان و نخبگان شهرری</p>
+            </div>
+        </footer>
+    </div>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+
+    <script>
+        document.getElementById('mobileMenuBtn').onclick = function() {
+            var x = document.getElementById('mainNav');
+            if (x.style.display === 'flex') {
+                x.style.display = 'none';
+            } else {
+                x.style.display = 'flex';
+            }
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

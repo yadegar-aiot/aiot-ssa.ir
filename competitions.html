@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مسابقات | انجمن علمی اینترنت اشیاء و علوم داده</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن" class="logo-img">
+            <span class="logo-text">انجمن اینترنت اشیاء و هوش مصنوعی</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">خانه</a>
+            <a href="team.html">تیم‌های اجرایی</a>
+            <a href="workshops.html">کارگاه‌ها</a>
+            <a href="competitions.html">مسابقات</a>
+            <a href="board.html">اعضای هیات مدیره</a>
+            <a href="about.html">درباره ما</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="page-title">
+        <h1>مسابقات</h1>
+    </div>
+    <section class="competitions">
+        <div class="container">
+            <div class="coming-soon">
+                <p>🔜 اطلاعات مسابقات به زودی اعلام می‌شود</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-container">
+        <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگو انجمن" class="footer-logo" onerror="this.src='https://placehold.co/60x60/1e40af/ffffff?text=AIoT'">
+        <p>© ۱۴۰۴ - انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی) - باشگاه پژوهشگران جوان و نخبگان شهرری</p>
+    </div>
+</footer>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+<script>
+    document.getElementById('mobileMenuBtn').onclick = function() {
+        var x = document.getElementById('mainNav');
+        if (x.style.display === 'flex') {
+            x.style.display = 'none';
+        } else {
+            x.style.display = 'flex';
+        }
+    };
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

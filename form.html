@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-form.css">
+</head>
+
+<body class="page-form">
+
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن" class="logo-img">
+                <span class="logo-text">انجمن اینترنت اشیاء و هوش مصنوعی</span>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <nav id="mainNav">
+                <a href="index.html">خانه</a>
+                <a href="team.html">تیم‌های اجرایی</a>
+                <a href="workshops.html">کارگاه‌ها</a>
+                <a href="competitions.html">مسابقات</a>
+                <a href="board.html">اعضای هیات مدیره</a>
+                <a href="about.html">درباره ما</a>
+            </nav>
+        </div>
+    </header>
+    <!-- لایه تیره برای پشت منو در موبایل -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <div class="fixed-background">
+        <img src="12.svg" alt="">
+    </div>
+
+    <div class="container">
+        <div class="search-filter">
+            <input type="text" id="searchBox" placeholder="جستجوی عنوان یا شماره پرونده...">
+            <select id="statusFilter">
+                <option value="all">همه وضعیت‌ها</option>
+                <option value="دارای ضمائم">دارای ضمائم</option>
+                <option value="بدون ضمائم">بدون ضمائم</option>
+            </select>
+            <select id="sortOrder">
+                <option value="newest">جدیدترین</option>
+                <option value="oldest">قدیمی‌ترین</option>
+            </select>
+        </div>
+
+        <div class="file-grid">
+            <div class="file-card" data-title="قرارداد فروش پروژه اینترنت اشیاء" data-number="1402/A-110"
+                data-date="2023-08-10" data-status="دارای ضمائم">
+                <h3>قرارداد فروش پروژه اینترنت اشیاء</h3>
+                <ul class="info-list">
+                    <li><span>شماره پرونده:</span> <span>1402/A-110</span></li>
+                    <li><span>تاریخ:</span> <span class="date-val">1402/05/10</span></li>
+                    <li><span>وضعیت:</span> <span class="status-val">دارای ضمائم</span></li>
+                </ul>
+                <a href="#" class="download-btn">مشاهده و دانلود</a>
+            </div>
+            <div class="file-card" data-title="قرارداد فروش پروژه اینترنت اشیاء" data-number="1402/A-110"
+                data-date="2023-08-10" data-status="دارای ضمائم">
+                <h3>قرارداد فروش پروژه اینترنت اشیاء</h3>
+                <ul class="info-list">
+                    <li><span>شماره پرونده:</span> <span>1402/A-110</span></li>
+                    <li><span>تاریخ:</span> <span class="date-val">1402/05/10</span></li>
+                    <li><span>وضعیت:</span> <span class="status-val">دارای ضمائم</span></li>
+                </ul>
+                <a href="#" class="download-btn">مشاهده و دانلود</a>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <footer>
+        <div class="container footer-container">
+            <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگو انجمن" class="footer-logo"
+                onerror="this.src='https://placehold.co/60x60/1e40af/ffffff?text=AIoT'">
+            <p>© ۱۴۰۴ - انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی) - باشگاه پژوهشگران جوان و نخبگان
+                شهرری</p>
+        </div>
+    </footer>
+    </div>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+
+    <script>
+
+        // یک کد واحد و تمیز برای کلید همبرگری
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+
+        if (menuBtn && mainNav) {
+            menuBtn.addEventListener('click', function () {
+                mainNav.classList.toggle('show'); // فقط کلاس رو جابجا کن، با استایل مستقیم بازی نکن!
+            });
+        }
+
+    </script>
+
+    <script src="script.js"></script>
+
+
+
+
+
+</body>
+
+</html>

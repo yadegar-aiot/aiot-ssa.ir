@@ -1,0 +1,628 @@
+/* ===== متغیرها و ریست ===== */
+:root {
+    --primary: #1e40af;
+    --primary-dark: #1e3a8a;
+    --primary-light: #3b82f6;
+    --bg-body: #f8fafc;
+    --bg-card: #ffffff;
+    --border-light: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+    --transition: all 0.3s ease;
+}
+
+/* ===== فونت‌های اختصاصی ===== */
+@font-face {
+    font-family: 'Pinar';
+    src: url('assets/fonts/Pinar-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Shabnam';
+    src: url('assets/fonts/Shabnam-FD.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-body);
+    font-family: 'Shabnam', 'Tahoma', 'Vazirmatn', sans-serif;
+    color: var(--text-main);
+    line-height: 1.6;
+    direction: rtl;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* تیترها با فونت پینار */
+h1, h2, h3, .hero-title, .section-title, .team-card h3, .workshop-term h3, .logo-text {
+    font-family: 'Pinar', 'Shabnam', sans-serif;
+    font-weight: 900;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* نوار پیشرفت اسکرول */
+#scrollProgress {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to left, var(--primary), var(--primary-light));
+    width: 0%;
+    z-index: 1100;
+    border-radius: 0 0 2px 0;
+}
+
+/* ===== هدر ریسپانسیو ===== */
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+    z-index: 100;
+    padding: 12px 0;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+/* دکمه منوی موبایل */
+.mobile-menu-btn {
+    display: none;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-size: 28px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mobile-menu-btn:hover {
+    background: var(--primary-dark);
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: var(--transition);
+    padding: 5px 0;
+}
+
+nav a:hover {
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* ===== صفحه اصلی (خانه) ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px;
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+}
+
+.hero-content {
+    animation: fadeInUp 1s ease;
+}
+
+.hero-title .line1 {
+    display: block;
+    font-size: 3rem;
+    color: rgb(250, 204, 21);
+    margin-bottom: 10px;
+    text-shadow: 4px 3px 0px rgba(0, 0, 0, 1);
+}
+
+.hero-title .line2 {
+    display: block;
+    color: #f8fafc;
+    font-size: 2.5rem;
+    text-shadow: 4px 3px 1px rgba(0, 0, 0, 1);
+}
+
+/* برای صفحات دیگر */
+.page-title {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 120px;
+}
+
+.page-title h1 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    text-shadow: 4px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== بخش‌های عمومی ===== */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    text-align: center;
+    position: relative;
+    color: var(--text-main);
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to left, var(--primary), var(--primary-light));
+    margin: 15px auto 0;
+    border-radius: 3px;
+}
+
+/* ===== تیم‌ها ===== */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.team-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: 30px 24px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+}
+
+.team-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.team-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.team-leader {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+}
+
+/* ===== کارگاه‌ها ===== */
+.workshop-term {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+}
+
+.workshop-term h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: var(--primary);
+    border-right: 4px solid var(--primary);
+    padding-right: 15px;
+}
+
+.workshop-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.workshop-link {
+    display: block;
+    background: #f1f5f9;
+    padding: 12px 20px;
+    border-radius: 40px;
+    color: var(--text-main);
+    text-decoration: none;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.workshop-link:hover {
+    background: var(--primary-light);
+    color: white;
+    transform: translateX(-5px);
+    border-color: var(--primary);
+}
+
+/* ===== مسابقات ===== */
+.competitions .coming-soon {
+    text-align: center;
+    font-size: 1.3rem;
+    background: var(--bg-card);
+    padding: 50px;
+    border-radius: 30px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+    color: var(--text-muted);
+}
+
+/* ===== درباره ما ===== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-main);
+}
+
+.about-details {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.about-details li {
+    margin-bottom: 12px;
+    padding-right: 10px;
+    border-right: 2px solid var(--primary);
+    color: var(--text-main);
+}
+
+.about-details li span {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.social-links {
+    margin-top: 25px;
+}
+
+.social-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.social-icons a, .social-links a {
+    background: #f1f5f9;
+    padding: 6px 14px;
+    border-radius: 30px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.social-icons a:hover, .social-links a:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.about-image .image-placeholder {
+    background: #f1f5f9;
+    border-radius: 24px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-light);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ===== اعضای هیات مدیره ===== */
+.board-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.board-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.board-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-md);
+}
+
+.board-avatar {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--primary);
+}
+
+.board-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: var(--primary);
+}
+
+.board-role {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+/* ===== فوتر ===== */
+footer {
+    background: #ffffff;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.footer-logo {
+    height: 80px;
+    margin-bottom: 5px;
+}
+
+footer p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* ===== دکمه بازگشت ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 48px;
+    height: 48px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 99;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--primary-dark);
+    transform: translateY(-3px);
+}
+
+/* ===== انیمیشن اسکرول ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== ریسپانسیو کامل ===== */
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-title .line1 {
+        font-size: 2rem;
+    }
+    .hero-title .line2 {
+        font-size: 1.6rem;
+    }
+    .section-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+       display: block; /* دکمه ظاهر بشه */
+        z-index: 1001;
+    }
+    
+    nav {
+        display: none; /* در حالت عادی مخفی */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        width: 100%;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    
+    nav.show {
+        display: flex !important;
+    }
+    
+    nav a {
+        padding: 12px 20px;
+        text-align: center;
+        border-bottom: 1px solid var(--border-light);
+    }
+    
+    nav a:last-child {
+        border-bottom: none;
+    }
+    
+    .header-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .logo-text {
+        font-size: 0.85rem;
+    }
+    
+    .hero {
+        padding: 100px 20px 60px;
+    }
+    
+    .hero-title .line1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero-title .line2 {
+        font-size: 1.2rem;
+    }
+    
+    .workshop-term h3 {
+        font-size: 1.2rem;
+    }
+    
+    .page-title h1 {
+        font-size: 1.8rem;
+    }
+    
+    section {
+        padding: 50px 0;
+    }
+    
+    .footer-logo {
+        height: 60px;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        left: 20px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .hero-title .line1 {
+        font-size: 1.2rem;
+    }
+    
+    .hero-title .line2 {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .logo-img {
+        height: 35px;
+    }
+    
+    .logo-text {
+        font-size: 0.7rem;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

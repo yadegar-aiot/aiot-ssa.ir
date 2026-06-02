@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تیم‌های اجرایی | انجمن علمی اینترنت اشیاء و علوم داده</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            padding: 30px 24px 24px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
+            cursor: pointer;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-light);
+        }
+
+        /* لوگوهای پشت زمینه */
+        .team-logo-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: 75%;
+            max-width: 90%;
+            opacity: 1;
+            z-index: 0;
+            pointer-events: none;
+            object-fit: contain;
+        }
+
+        /* لوگوی تیم پژوهش - کوچکتر */
+        .research-logo {
+            height: 65%;
+        }
+
+        /* لوگوی تیم طراحی - بزرگتر */
+        .design-logo {
+            height: 85%;
+        }
+
+        /* محتوای کارت */
+        .team-card > *:not(.team-logo-bg) {
+            position: relative;
+            z-index: 2;
+        }
+
+        .team-card h3 {
+            font-size: 1.4rem;
+            margin: 0 0 10px;
+            color: var(--primary);
+        }
+
+        .team-leader {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .team-desc {
+            margin-top: auto;
+            padding-top: 24px;
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 700px) {
+            .team-card {
+                min-height: 360px;
+                padding: 20px;
+            }
+            .team-logo-bg {
+                height: 60%;
+            }
+            .research-logo {
+                height: 50%;
+            }
+            .design-logo {
+                height: 70%;
+            }
+            .team-card h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="scrollProgress"></div>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگوی انجمن" class="logo-img">
+            <span class="logo-text">انجمن اینترنت اشیاء و هوش مصنوعی</span>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">خانه</a>
+            <a href="team.html">تیم‌های اجرایی</a>
+            <a href="workshops.html">کارگاه‌ها</a>
+            <a href="competitions.html">مسابقات</a>
+            <a href="board.html">اعضای هیات مدیره</a>
+            <a href="about.html">درباره ما</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="page-title">
+        <h1>تیم‌های اجرایی</h1>
+    </div>
+    <section class="teams">
+        <div class="container">
+            <div class="team-grid">
+                <!-- تیم علمی پژوهشی -->
+                <div class="team-card" onclick="location.href='teams/research.html'">
+                    <img src="assets/svgs/team-research.svg" alt="" class="team-logo-bg research-logo">
+                    <h3>تیم علمی پژوهشی</h3>
+                    <p class="team-leader">سرپرست: <strong>سجاد ثقفی</strong></p>
+                    <p class="team-desc">پژوهش‌های پیشرفته در حوزه هوش مصنوعی، اینترنت اشیا و علوم داده</p>
+                </div>
+
+                <!-- تیم طراحی و ایده‌پردازی -->
+                <div class="team-card" onclick="location.href='teams/design.html'">
+                    <img src="assets/svgs/team-design.svg" alt="" class="team-logo-bg design-logo">
+                    <h3>تیم طراحی و ایده‌پردازی</h3>
+                    <p class="team-leader">سرپرست: <strong>حنانه قنادان‌زاده</strong></p>
+                    <p class="team-desc">طراحی تجربه کاربری، برندسازی، محتوای بصری و ایده‌پردازی خلاقانه</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container footer-container">
+        <img src="assets/svgs/aiot-logo-blue.svg" alt="لوگو انجمن" class="footer-logo" onerror="this.src='https://placehold.co/60x60/1e40af/ffffff?text=AIoT'">
+        <p>© ۱۴۰۴ - انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی) - باشگاه پژوهشگران جوان و نخبگان شهرری</p>
+    </div>
+</footer>
+
+<button id="backToTop" class="back-to-top">↑</button>
+
+<script>
+    document.getElementById('mobileMenuBtn').onclick = function() {
+        var x = document.getElementById('mainNav');
+        if (x.style.display === 'flex') {
+            x.style.display = 'none';
+        } else {
+            x.style.display = 'flex';
+        }
+    };
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

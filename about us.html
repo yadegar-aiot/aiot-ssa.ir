@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>درباره ما | انجمن علمی اینترنت اشیاء و علوم داده</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style about us.css" />
+  </head>
+  <body>
+    <!-- لایه ثابت پس‌زمینه -->
+    <div class="fixed-background">
+      <img src="./12.svg" alt="gear background" />
+    </div>
+
+    <!-- کانتینر اصلی -->
+    <div class="main-wrapper">
+      <div id="scrollProgress"></div>
+
+      <header>
+        <div class="container header-container">
+          <div class="logo">
+            <img
+              src="assets/svgs/aiot-logo-blue.svg"
+              alt="لوگوی انجمن"
+              class="logo-img"
+            />
+            <span class="logo-text">انجمن اینترنت اشیاء و هوش مصنوعی</span>
+          </div>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+          <nav id="mainNav">
+            <a href="index.html">خانه</a>
+            <a href="team.html">تیم‌های اجرایی</a>
+            <a href="workshops.html">کارگاه‌ها</a>
+            <a href="competitions.html">مسابقات</a>
+            <a href="board.html">اعضای هیات مدیره</a>
+            <a href="about.html">درباره ما</a>
+          </nav>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <div class="about-grid">
+          <div class="about-text">
+            <img
+              src="assets/svgs/aiot-logo-blue.svg"
+              alt="لوگوی انجمن"
+              class="about-logo"
+            />
+
+            <p>
+              <strong
+                >انجمن علمی دانشجویی اینترنت اشیا و علوم داده (هوش
+                مصنوعی)</strong
+              >
+              با هدف ارتقای سطح علمی دانشجویان در حوزه علوم داده و هوش مصنوعی
+              فعالیت می‌کند.
+            </p>
+
+            <ul class="about-details">
+              <li>
+                <span>📍 محل فعالیت:</span> باشگاه پژوهشگران جوان و نخبگان -
+                شهرری
+              </li>
+              <li>
+                <span>📚 رشته‌های تحت پوشش:</span> مهندسی کامپیوتر، علوم
+                کامپیوتر و مهندسی برق
+              </li>
+              <li><span>📅 تاریخ تاسیس:</span> ۶ خردادماه ۱۴۰۴</li>
+              <li><span>📜 تاریخ اخذ پروانه فعالیت:</span> ۲۸ آبان‌ماه ۱۴۰۴</li>
+              <li><span>👩‍🏫 استاد راهنما:</span> فاطمه نصیری</li>
+              <li><span>✍️ دبیر انجمن:</span> پوریا لاری</li>
+            </ul>
+            <div class="social-links">
+              <p><strong>صفحات رسمی انجمن:</strong></p>
+              <div class="social-icons">
+                <a href="https://bpj.iau.ir/community/50566/" target="_blank"
+                  >BPJ</a
+                >
+                <a href="https://github.com/yadegar-aiot" target="_blank"
+                  >GitHub</a
+                >
+                <a
+                  href="https://www.linkedin.com/company/yadegar-aiot"
+                  target="_blank"
+                  >LinkedIn</a
+                >
+                <a href="https://t.me/yadegar_aiot" target="_blank">Telegram</a>
+                <a href="https://ble.ir/yadegar_aiot" target="_blank">Bale</a>
+                <a href="https://ble.ir/join/DoJwpxagg3" target="_blank"
+                  >Bale (invite)</a
+                >
+              </div>
+              <p>
+                <strong>روابط عمومی:</strong> محمدرضا احمدی —
+                <a href="https://t.me/AIot_ssa_yi_iau" target="_blank"
+                  >Telegram</a
+                >
+                |
+                <a href="https://ble.ir/AIot_ssa_yi_iau" target="_blank"
+                  >Bale</a
+                >
+              </p>
+            </div>
+          </div>
+          <div class="about-image">
+            <img
+              src="assets/images/group-photo.jpg"
+              alt="عکس گروه انجمن"
+              onerror="
+                this.src =
+                  'https://placehold.co/600x400/f1f5f9/1e40af?text=عکس+گروه'
+              "
+            />
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="container footer-container">
+          <img
+            src="./assets/svgs/aiot-logo-blue.svg"
+            alt="لوگو انجمن"
+            class="footer-logo"
+            onerror="
+              this.src = 'https://placehold.co/60x60/1e40af/ffffff?text=AIoT'
+            "
+          />
+          <p>
+            © ۱۴۰۴ - انجمن علمی دانشجویی اینترنت اشیاء و علوم داده (هوش مصنوعی)
+            - باشگاه پژوهشگران جوان و نخبگان شهرری
+          </p>
+        </div>
+      </footer>
+    </div>
+
+    <button id="backToTop" class="back-to-top">↑</button>
+
+    <script>
+      document.getElementById("mobileMenuBtn").onclick = function () {
+        var x = document.getElementById("mainNav");
+        if (x.style.display === "flex") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "flex";
+        }
+      };
+    </script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
