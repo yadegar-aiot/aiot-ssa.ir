@@ -1,7 +1,7 @@
 <div align="center">
-
+<!-- AIOT-LOGO-V1.08-ANIMATION-001.svg -->
 <!-- لوگو -->
-<img src="https://github.com/yadegar-aiot/.github/blob/main/profile%2Fassets%2FIOT-LOGO-Blue-stars-smil.svg" width="300" alt="test" />
+<img src="https://github.com/yadegar-aiot/.github/blob/main/profile%2Fassets%2FAIOT-LOGO-V1.08-ANIMATION-001.svg" width="300" alt="test" />
 
 # 🌐 وبسایت رسمی انجمن علمی هوش مصنوعی و اینترنت اشیاء
 
