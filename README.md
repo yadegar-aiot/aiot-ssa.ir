@@ -8,7 +8,7 @@
 ### انجمن علمی دانشجویی اینترنت اشیاء و علوم داده «هوش مصنوعی»
 #### دانشگاه آزاد اسلامی — واحد یادگار امام خمینی (ره) شهرری
 
-[![Website](https://img.shields.io/badge/🌐_وبسایت_رسمی-aiot--ssa.ir-blue?style=for-the-badge)](https://aiot-ssa.ir)
+[![Website](https://img.shields.io/badge/Website-aiot--ssa.ir-blue?style=for-the-badge)](https://aiot-ssa.ir)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![HTML](https://img.shields.io/badge/HTML-5-orange?style=for-the-badge&logo=html5)](.)
 [![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Active-brightgreen?style=for-the-badge&logo=github)](https://aiot-ssa.ir)
