@@ -1,22 +1,3 @@
-# فونت‌های تجاری
-assets/fonts/
-*.ttf
-*.otf
-*.woff
-*.woff2
-
-# فایل‌های سیستمی ویندوز
-Thumbs.db
-desktop.ini
-
-# فایل‌های سیستمی مک
-.DS_Store
-
-# فایل‌های ادیتور
-.vscode/
-.idea/
-
-# فایل‌های تست و موقت
-test.html
-*.tmp
-*.log
+node_modules/
+.vs/
+*.zip
